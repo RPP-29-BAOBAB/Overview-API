@@ -23,5 +23,8 @@
     "mongodb": "^4.1.1",
     "mongoose": "^6.0.4",
     "nodemon": "^2.0.12"
+  },
+  "devDependencies": {
+    "jest": "^27.1.1"
   }
 }
