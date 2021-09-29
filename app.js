@@ -114,7 +114,6 @@ app.get('/products', async (req, res) => {
       res.status(200).json(products);
     }
   } catch (err) {
-    console.error(err)
     res.status(400).send();
   }
 })
@@ -142,7 +141,6 @@ app.get(`/products/:product_id`, async (req, res) => {
       res.json(product[0]);
     }
   } catch (err) {
-    console.error(err)
     res.status(404).send();
   }
 });
@@ -150,20 +148,17 @@ app.get(`/products/:product_id`, async (req, res) => {
 app.get('/products/:product_id/styles', async (req, res) => {
   try {
     let productId = Number(req.params.product_id);
-    console.log(req.params.product_id)
     let styles = await getStyleInfo(productId)
     let result = {
       product_id: productId.toString(),
       results: styles
     };
-    console.log(styles)
     if (!styles[0]) {
       throw new Error('No styles associated with the product ID')
     } else {
       res.status(200).json(result);
     }
   } catch (err) {
-    console.error(err)
     res.status(404).send();
   }
 })
