@@ -43,7 +43,7 @@ const getStyleInfo = async function (productId) {
                 $expr: { $eq: ['$styleId', '$$styleId'] }
               }
             },
-            { $sort: { id: 1 } }
+            // { $sort: { id: 1 } }
           ]
         }
       },
@@ -106,7 +106,7 @@ app.get('/products', async (req, res) => {
       }
     }, { _id: 0, features: 0, styles: 0 })
       .limit(count)
-      .exec();
+      .lean();
 
     if (!products[0]) {
       throw new Error('invalid queries')
